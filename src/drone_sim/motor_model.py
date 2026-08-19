@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def calculate_motor_outputs(
     commands: np.ndarray,
     omega_max: float,
@@ -17,4 +18,4 @@ def calculate_motor_outputs(
     thrusts = thrust_coefficient * angular_speeds**2
     torques = torque_coefficient * angular_speeds**2
 
-    return angular_speeds,thrusts, torques
+    return angular_speeds, thrusts, torques
