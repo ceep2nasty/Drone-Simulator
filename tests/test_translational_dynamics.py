@@ -1,7 +1,6 @@
 import numpy as np
 import pytest
 
-
 from drone_sim.translational_dynamics import calculate_translational_acceleration
 
 
