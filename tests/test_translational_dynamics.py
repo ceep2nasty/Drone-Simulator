@@ -7,7 +7,6 @@ from drone_sim.translational_dynamics import calculate_translational_acceleratio
 # Test cases for the translational dynamics of the drone
 def test_just_gravity() -> None:
     """Test the translational dynamics of the drone."""
-    
 
     # Test case 1: no inertial force (just gravity acting on the drone)
     # Test 1 parameters
@@ -17,7 +16,10 @@ def test_just_gravity() -> None:
 
     acceleration = calculate_translational_acceleration(force_inertial, mass, gravity)
     expected_acceleration = np.array([0.0, 0.0, -9.81])
-    assert np.allclose(acceleration, expected_acceleration), f"Expected {expected_acceleration}, but got {acceleration}"
+    assert np.allclose(acceleration, expected_acceleration), (
+        f"Expected {expected_acceleration}, but got {acceleration}"
+    )
+
 
 def test_just_horizontal_force() -> None:
     """Test the translational dynamics of the drone."""
@@ -30,7 +32,10 @@ def test_just_horizontal_force() -> None:
 
     acceleration = calculate_translational_acceleration(force_inertial, mass, gravity)
     expected_acceleration = np.array([10.0, 0.0, -9.81])
-    assert np.allclose(acceleration, expected_acceleration), f"Expected {expected_acceleration}, but got {acceleration}"
+    assert np.allclose(acceleration, expected_acceleration), (
+        f"Expected {expected_acceleration}, but got {acceleration}"
+    )
+
 
 def test_hover_force() -> None:
     """Test the translational dynamics of the drone."""
@@ -43,9 +48,13 @@ def test_hover_force() -> None:
 
     acceleration = calculate_translational_acceleration(force_inertial, mass, gravity)
     expected_acceleration = np.array([0, 0, 0])
-    assert np.allclose(acceleration, expected_acceleration), f"Expected {expected_acceleration}, but got {acceleration}"
+    assert np.allclose(acceleration, expected_acceleration), (
+        f"Expected {expected_acceleration}, but got {acceleration}"
+    )
+
 
 # Now test that the function raises errors for invalid inputs
+
 
 def test_0_mass() -> None:
     """Test that the function raises an error for zero mass."""
@@ -55,6 +64,7 @@ def test_0_mass() -> None:
 
     with pytest.raises(ValueError, match="mass must be positive."):
         calculate_translational_acceleration(force_inertial, mass, gravity)
+
 
 def test_force_inertial_invalid_shape() -> None:
     """Test that the function raises an error for invalid force_inertial shape."""

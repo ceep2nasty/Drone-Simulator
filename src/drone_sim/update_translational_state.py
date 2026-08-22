@@ -4,10 +4,10 @@ import numpy as np
 
 
 def update_translational_state(
-        position_inertial: np.ndarray,
-        velocity_inertial: np.ndarray,
-        acceleration_inertial: np.ndarray,
-        dt: Real
+    position_inertial: np.ndarray,
+    velocity_inertial: np.ndarray,
+    acceleration_inertial: np.ndarray,
+    dt: Real,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Update the translational state of the drone.
 
@@ -36,8 +36,10 @@ def update_translational_state(
         raise TypeError("acceleration_inertial must be a NumPy array.")
     if acceleration_inertial.shape != (3,):
         raise ValueError("acceleration_inertial must have shape (3,).")
-    
-    new_position = position_inertial + velocity_inertial * dt + 0.5 * acceleration_inertial * dt ** 2 # semi-implicit Euler integration assuming constant acceleration over the time step
+
+    new_position = (
+        position_inertial + velocity_inertial * dt + 0.5 * acceleration_inertial * dt**2
+    )  # semi-implicit Euler integration assuming constant acceleration over the time step
     new_velocity = velocity_inertial + acceleration_inertial * dt
 
     return [new_position, new_velocity]

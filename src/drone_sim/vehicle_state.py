@@ -5,13 +5,14 @@ import numpy as np
 
 @dataclass
 class VehicleState:
-    """ Represents the state of the drone
+    """Represents the state of the drone
     Attributes:
         position (np.ndarray): The position of the drone in 3D space (x, y, z).
         velocity (np.ndarray): The velocity of the drone in 3D space (vx, vy, vz).
         orientation (np.ndarray): The orientation of the drone represented as euler angles (roll, pitch, yaw).
         angular_velocity (np.ndarray): The angular velocity of the drone in 3D space (wx, wy, wz).
     """
+
     position: np.ndarray
     velocity: np.ndarray
     orientation: np.ndarray
@@ -33,4 +34,3 @@ class VehicleState:
             raise ValueError("Orientation must be a 3D vector.")
         if self.angular_velocity.shape != (3,):
             raise ValueError("Angular velocity must be a 3D vector.")
-
